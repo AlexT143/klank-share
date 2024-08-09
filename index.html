@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klank - Fallback Page</title>
+    <meta name="description" content="Fallback page for Klank app links">
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #F27121;
+            color: white;
+        }
+        p {
+            text-align: center;
+            max-width: 80%;
+            margin-bottom: 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: white;
+            color: #F27121;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <p>This is a fallback page attempting to link to the Klank app. If you're seeing this, the app couldn't be opened.</p>
+    <a href="https://klank.co.uk" class="cta-button">Go to Klank Website</a>
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        var userId = urlParams.get('id');
+        
+        if (userId) {
+            var deepLink = 'klank://u/' + userId + '/profile/';
+            window.location.href = deepLink;
+            
+            setTimeout(function() {
+                window.location.href = 'https://klank.co.uk';
+            }, 500);
+        }
+    </script>
+</body>
+</html>
